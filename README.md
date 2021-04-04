@@ -1,2 +1,2 @@
 # DWM
-My Dwm build with Slstatus
+My Dwm build with Slstatus and dmenu 
