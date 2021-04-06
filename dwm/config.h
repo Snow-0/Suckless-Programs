@@ -87,11 +87,13 @@ static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "HHH",      grid },
 };
 
 /* key definitions */
@@ -107,14 +109,15 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *rofi[] = { "rofi", "-show", "drun", "-modi", "drun", "-display-drun", "", NULL };
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browser[]  = { "firefox", NULL };
 static const char *pavu[]     = { "pavucontrol", NULL };
 
 static const char *suspend[]    = { "systemctl", "suspend", NULL };
-static const char *restart[]  = { "systemctl", " reboot", NULL };
-static const char *shutdown[] = { "systemctl," " shutdown", NULL };
+static const char *restart[]  = { "reboot", NULL };
+static const char *shutdown[] = { "shutdown", "now", NULL };
 
 
 static const char *vol_up[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
@@ -125,20 +128,21 @@ static const char *play_tggl[]= { "playerctl", "play-pause", NULL };
 static const char *play_next[]= { "playerctl", "next", NULL };
 static const char *play_prev[]= { "playerctl", "previous", NULL };
 
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,	                XK_w,      killclient,     {0} }, // kill window
+	{ MODKEY,				                XK_w,      killclient,     {0} }, // kill window
 	{ MODKEY|ShiftMask,             XK_q,      quit,     	   {0} }, // quit dwm
 
 	// restart, shutdown, and sleep controls
-	{ MODKEY,			XK_s,	   spawn,	   {.v = suspend } },
-	{ MODKEY|ControlMask,		XK_r,	   spawn,	   {.v = restart } },
-	{ MODKEY|ControlMask,		XK_a,	   spawn,	   {.v = shutdown } },
+	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = suspend } },
+	{ MODKEY|ShiftMask,		XK_r,	   spawn,	   {.v = restart } },
+	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   {.v = shutdown } },
 	// open programs
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_f,      spawn,          {.v = browser } },
-	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
+	{ MODKEY,												XK_f,      spawn,          {.v = browser } },
+	{ MODKEY|ShiftMask,           XK_p,      spawn,            {.v = pavu } },
 
 	// laptop audio control
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = vol_up } },
@@ -152,10 +156,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // monocle
-
+  { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, // increase master size
-
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, // focus down
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, // focus up
 

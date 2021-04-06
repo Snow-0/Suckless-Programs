@@ -65,7 +65,7 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_rx,	" %sB/s  |  ", 	"enp39s0" },
+//	{ netspeed_rx,	"  %sB/s   |   ", 	"enp39s0" },
 	{ run_command,	" %s   |   ", "~/slstatus/src/volume.sh" },
 	{ run_command,  " %s   |   ", "~/slstatus/src/update.sh" },
 	{ cpu_perc,	"   %s%%   |   ",	NULL },

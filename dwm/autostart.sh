@@ -8,6 +8,8 @@ xinput --set-prop 9 300 -0.70
 # Status Bar
 slstatus &
 
+# Compositor 
+picom &
 
 # Wallpaper
 nitrogen --restore 
