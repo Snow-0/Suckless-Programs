@@ -48,6 +48,7 @@ static const Rule rules[] = {
 	{ "Alacritty",NULL,       NULL,           0,            0,        1,          0,         -1 },
 	{ "discord",  NULL,       NULL,           1 << 3,       0,        0,          0,         -1 },
 	{ NULL,       NULL,       "Event Tester", 0,            0,        0,          1,         -1 }, /* xev */
+	{ "Dolphin",  NULL,				NULL,						1 << 1,				0,				0,					0,				 -1 },
 };
 
 /* Bar rules allow you to configure what is shown where on the bar, as well as
