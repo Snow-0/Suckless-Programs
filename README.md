@@ -40,6 +40,8 @@ Add the following line to your .xinitrc to start dwm using startx:
 
 Configuration
 -------------
-The configuration of dwm is done by creating a custom config.def.h
+The configuration of dwm is done by creating editing the config.def.h
 and (re)compiling the source code with:
-      make clean install
+
+    make clean install
+   
