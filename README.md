@@ -42,4 +42,4 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.def.h
 and (re)compiling the source code with:
-    make clean install
+      make clean install
