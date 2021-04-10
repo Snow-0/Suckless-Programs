@@ -23,10 +23,13 @@ options:
 .c.o:
 	${CC} -c ${CFLAGS} $<
 
-${OBJ}: config.h config.mk
+${OBJ}: config.h config.mk patches.h
 
 config.h:
 	cp config.def.h $@
+
+patches.h:
+	cp patches.def.h $@
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
@@ -37,7 +40,7 @@ dwm-msg:
 endif
 
 clean:
-	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz config.h
+	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz config.h patches.h
 	rm -f dwm-msg
 
 dist: clean
@@ -54,6 +57,7 @@ install: all
 ifdef YAJLLIBS
 	cp -f dwm-msg ${DESTDIR}${PREFIX}/bin
 endif
+	#cp -f patch/dwmc ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
 ifdef YAJLLIBS
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-msg
