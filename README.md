@@ -44,4 +44,9 @@ The configuration of dwm is done by creating editing the config.def.h
 and (re)compiling the source code with:
 
     make clean install
+    
+Libraries 
+---------
+Swallow needs the libx11 library
+    sudo pacman -S libx11
    
