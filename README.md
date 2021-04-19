@@ -4,15 +4,23 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 
 Patches
 -------
-+ movestack
-+ swallow
-+ attachasideandbelow
-+ fullgaps
-+ bar-height
-+ autostart
-+ gridmode
-+ static status
-
++dwmblocks patch
++statuscmd
++systray
++attach aside 
++attach below 
++autostart
++center
++bar height
++vanity gaps
++gapless grid mode
++scratchpads
++pertag
++pertag vanity gaps
++swallow
++steam patch 
++cycle layouts
++movestack
 
 Requirements
 ------------
