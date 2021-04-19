@@ -56,7 +56,6 @@ and (re)compiling the source code with:
 Libraries 
 ---------
 Swallow needs the libx11 library
-```
-    sudo pacman -S libx11
+ `   sudo pacman -S libx11
 
    
