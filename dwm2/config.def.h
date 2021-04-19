@@ -12,7 +12,7 @@ static const unsigned int gappov         = 20;  /* vert outer gap between window
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 static const char autostartblocksh[]     = "autostart_blocking.sh";
 static const char autostartsh[]          = "autostart.sh";
-static const char dwmdir[]               = "/home/max/dwm2/";
+static const char dwmdir[]               = "dwm2";
 static const char localshare[]           = "/home/max/";
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
@@ -29,12 +29,12 @@ static const char dmenufont[]       = {"monospace:size=11"};
 static char normfgcolor[]                = "#D8DEE9";
 static char normbgcolor[]                = "#2E3440"; // status bar color 
 static char normbordercolor[]            = "#4c566a"; // window border pixel color
-static char normfloatcolor[]             = "#db8fd9";
+static char normfloatcolor[]             = "#4c566a";
 
 static char selfgcolor[]                 = "#D8DEE9";
 static char selbgcolor[]                 = "#005577";
 static char selbordercolor[]             = "#81A1C1";
-static char selfloatcolor[]              = "#005577";
+static char selfloatcolor[]              = "#81A1C1";
 
 static char titlenormfgcolor[]           = "#D8DEE9";
 static char titlenormbgcolor[]           = "#2E3440";
@@ -43,8 +43,8 @@ static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#1C1B1D";
 static char titleselbgcolor[]            = "#81A1C1"; //title background
-static char titleselbordercolor[]        = "#005577"; 
-static char titleselfloatcolor[]         = "#005577";
+static char titleselbordercolor[]        = "#4c566a"; 
+static char titleselfloatcolor[]         = "#81A1C1";
 
 static char tagsnormfgcolor[]            = "#D8DEE9";
 static char tagsnormbgcolor[]            = "#2E3440";
@@ -53,11 +53,11 @@ static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#1C1B1D"; // active workspace foreground
 static char tagsselbgcolor[]             = "#81A1C1";
-static char tagsselbordercolor[]         = "#005577";
-static char tagsselfloatcolor[]          = "#005577";
+static char tagsselbordercolor[]         = "#81A1C1";
+static char tagsselfloatcolor[]          = "#81A1C1";
 
 static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#222222";
+static char urgbgcolor[]                 = "#ffffff";
 static char urgbordercolor[]             = "#ffffff";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -272,7 +272,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_0,          togglegaps,             {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
-	{ MODKEY,                       XK_Tab,        view,                   {0} },
+//	{ MODKEY,                       XK_Tab,        view,                   {0} },
 	{ MODKEY,             		XK_w,          killclient,             {0} },
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
@@ -290,8 +290,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,     focusmon,               {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,      tagmon,                 {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {.i = +1 } },
+	{ MODKEY,		        XK_Tab,        cyclelayout,            {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Tab,        cyclelayout,            {.i = +1 } },
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)
 	TAGKEYS(                        XK_3,                                  2)
