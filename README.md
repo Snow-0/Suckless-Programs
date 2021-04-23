@@ -20,6 +20,10 @@ Installation
 cd into either slstatus or dmenu
 
     make clean install
+    
+dwm-flexipatch
+==============
+Copy of dwm without running flexipatch finalizer 
 
 
 
